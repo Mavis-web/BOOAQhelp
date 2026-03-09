@@ -24,7 +24,10 @@ new CozeWebSDK.WebChatClient({
 
   auth:{
     type:'token',
-    token:'pat_你的token'
+    token:'pat_你的token',
+    onRefreshToken: async function () {
+      return 'pat_你的token'
+    }
   }
 
 })
