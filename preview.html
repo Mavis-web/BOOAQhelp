@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>BOO 法規 QA 小幫手</title>
+
+<style>
+body{
+  font-family: Arial;
+  margin:40px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>大型物流中心 BOO 法規 QA 小幫手</h2>
+<p>請在右下角聊天視窗提問。</p>
+
+<script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js"></script>
+
+<script>
+
+async function getToken(){
+  const response = await fetch('/api/coze-token')
+  const data = await response.json()
+  return data.token
+}
+
+new CozeWebSDK.WebChatClient({
+
+  config:{
+    bot_id:'7612906578329944069'
+  },
+
+  componentProps:{
+    title:'BOO QA 小幫手'
+  },
+
+  auth:{
+    type:'token',
+
+    token: async function(){
+      return await getToken()
+    },
+
+    onRefreshToken: async function(){
+      return await getToken()
+    }
+
+  }
+
+})
+
+</script>
+
+</body>
+</html>
